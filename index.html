@@ -9,15 +9,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #0d2d6b;
-      --blue-mid: #1a4494;
-      --blue-light: #2557c7;
-      --orange: #e85d00;
-      --orange-light: #ff6d00;
+      --blue: #1565c0;
+      --blue-dark: #0d47a1;
+      --blue-light: #1e88e5;
+      --orange: #e65100;
+      --orange-light: #ef6c00;
       --gray-light: #f5f7fa;
       --gray-mid: #e2e8f0;
       --gray-text: #64748b;
-      --dark: #0a1628;
+      --dark: #0f172a;
     }
 
     html { scroll-behavior: smooth; }
@@ -25,537 +25,538 @@
 
     /* ── TOP BAR ── */
     .topbar {
-      background: var(--blue);
-      color: #cbd5e1;
+      background: var(--blue-dark);
+      color: #bfdbfe;
       font-size: 13px;
-      padding: 8px 0;
+      padding: 9px 0;
     }
     .topbar-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
     }
-    .topbar-left { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
-    .topbar-left a { color: #cbd5e1; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .topbar-left { display: flex; gap: 28px; align-items: center; }
+    .topbar-left span { display: flex; align-items: center; gap: 7px; }
+    .topbar-left a { color: #bfdbfe; text-decoration: none; display: flex; align-items: center; gap: 7px; transition: color .2s; }
     .topbar-left a:hover { color: #fff; }
-    .topbar-right { display: flex; gap: 16px; align-items: center; }
-    .topbar-right a { color: #cbd5e1; text-decoration: none; font-size: 12px; }
-    .topbar-right a:hover { color: var(--orange-light); }
-    .badge-licensed {
-      background: var(--orange);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.3px;
+    .topbar-right { display: flex; gap: 14px; align-items: center; }
+    .topbar-right a {
+      color: #bfdbfe;
+      text-decoration: none;
+      width: 28px; height: 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      transition: all .2s;
     }
+    .topbar-right a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .topbar-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.2); }
 
     /* ── NAV ── */
     nav {
       background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
     }
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 76px;
+      gap: 24px;
     }
-    .logo {
+    .logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
       text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: color .2s;
+      position: relative;
+      padding-bottom: 4px;
     }
-    .logo-icon {
-      width: 48px;
-      height: 48px;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
       background: var(--blue);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      transition: width .25s;
     }
-    .logo-icon svg { width: 28px; height: 28px; fill: #fff; }
-    .logo-text { line-height: 1.15; }
-    .logo-text .l1 { font-size: 17px; font-weight: 900; color: var(--blue); letter-spacing: -0.3px; }
-    .logo-text .l2 { font-size: 11px; font-weight: 600; color: var(--orange); letter-spacing: 1.5px; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: #334155; letter-spacing: 0.3px; transition: color .2s; }
-    .nav-links a:hover { color: var(--blue-light); }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-cta {
-      background: var(--orange);
+      background: var(--blue);
       color: #fff;
       text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
+      padding: 13px 26px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       display: flex;
       align-items: center;
       gap: 8px;
       transition: background .2s, transform .15s;
+      white-space: nowrap;
     }
-    .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
       position: relative;
-      min-height: 600px;
+      height: 620px;
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #0a1628 0%, #0d2d6b 50%, #1a3a8a 100%);
     }
-    .hero-bg {
+    .hero-img {
       position: absolute;
       inset: 0;
-      background-image:
-        radial-gradient(ellipse at 70% 50%, rgba(37, 87, 199, 0.3) 0%, transparent 60%),
-        radial-gradient(ellipse at 10% 80%, rgba(232, 93, 0, 0.15) 0%, transparent 50%);
-    }
-    .hero-grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-image-side {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 45%;
-      background: linear-gradient(90deg, #0d2d6b, transparent 30%),
-        url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80') center/cover no-repeat;
-      opacity: 0.5;
+      background: url('https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2021/01/homepic.png') center/cover no-repeat;
     }
     .hero-inner {
       position: relative;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 0 32px;
       width: 100%;
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(232,93,0,0.15);
-      border: 1px solid rgba(232,93,0,0.4);
-      color: #ffa366;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
+      color: #fff;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: rgba(255,255,255,0.7);
     }
     .hero h1 {
-      font-size: clamp(38px, 5vw, 64px);
+      font-size: clamp(44px, 5.5vw, 72px);
       font-weight: 900;
       color: #fff;
-      line-height: 1.05;
-      letter-spacing: -1.5px;
-      max-width: 640px;
-      margin-bottom: 20px;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+      margin-bottom: 16px;
+      max-width: 700px;
     }
-    .hero h1 span { color: var(--orange-light); }
+    .hero h1 span { color: #60a5fa; }
     .hero-sub {
-      font-size: 18px;
-      color: #94a3b8;
-      max-width: 500px;
-      margin-bottom: 40px;
-      line-height: 1.6;
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--orange);
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-hero {
+      background: var(--blue);
       color: #fff;
       text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(232,93,0,0.4);
-    }
-    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,93,0,0.5); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: background .2s;
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.18); }
-    .hero-phone-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 10px 20px;
-      border-radius: 50px;
-      color: #fff;
+      padding: 16px 36px;
+      border-radius: 6px;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .btn-hero:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn-hero-outline {
+      background: transparent;
+      color: #fff;
       text-decoration: none;
-      transition: background .2s;
+      padding: 15px 36px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all .2s;
     }
-    .hero-phone-pill:hover { background: rgba(255,255,255,0.14); }
-    .hero-phone-pill .dot {
-      width: 8px; height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.3); }
-    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.15); }
 
-    /* ── STATS STRIP ── */
-    .stats-strip {
+    /* ── TRUST BAR ── */
+    .trust-bar {
       background: #fff;
       border-bottom: 1px solid var(--gray-mid);
+      padding: 0;
     }
-    .stats-inner {
+    .trust-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      divide-x: 1px solid var(--gray-mid);
     }
-    .stat-item {
-      padding: 28px 24px;
-      text-align: center;
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 20px;
       border-right: 1px solid var(--gray-mid);
     }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-size: 36px;
-      font-weight: 900;
-      color: var(--blue);
-      line-height: 1;
-      letter-spacing: -1px;
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      font-size: 28px;
+      flex-shrink: 0;
     }
-    .stat-num span { color: var(--orange); }
-    .stat-label { font-size: 13px; color: var(--gray-text); font-weight: 600; margin-top: 4px; letter-spacing: 0.3px; }
+    .trust-text strong { font-size: 14px; font-weight: 800; color: var(--dark); display: block; }
+    .trust-text span { font-size: 12px; color: var(--gray-text); }
 
     /* ── SECTION COMMONS ── */
     section { padding: 80px 0; }
-    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section-label {
-      display: inline-flex;
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--orange);
+      gap: 12px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
+      color: var(--blue);
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .section-label::before {
+    .section-eyebrow::before {
       content: '';
       display: block;
-      width: 24px; height: 2px;
-      background: var(--orange);
+      width: 28px; height: 2px;
+      background: var(--blue);
     }
     h2.section-title {
-      font-size: clamp(28px, 3.5vw, 42px);
+      font-size: clamp(28px, 3.5vw, 40px);
       font-weight: 900;
       color: var(--dark);
-      letter-spacing: -0.8px;
+      letter-spacing: -1px;
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-    .section-desc {
-      font-size: 17px;
-      color: var(--gray-text);
-      line-height: 1.7;
-      max-width: 560px;
-    }
+    .section-desc { font-size: 16px; color: var(--gray-text); line-height: 1.7; max-width: 540px; }
 
     /* ── SERVICES ── */
     #services { background: var(--gray-light); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
     .service-card {
       background: #fff;
-      border-radius: 16px;
-      padding: 32px 28px;
+      border-radius: 12px;
+      overflow: hidden;
       border: 1px solid var(--gray-mid);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
+      transition: transform .2s, box-shadow .2s;
       cursor: default;
     }
     .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(13,45,107,0.1);
-      border-color: var(--blue-light);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(21,101,192,0.13);
     }
-    .service-icon {
-      width: 52px; height: 52px;
-      border-radius: 12px;
+    .service-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .service-card-body { padding: 20px; }
+    .service-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .service-card p { font-size: 13px; color: var(--gray-text); line-height: 1.6; }
+    .service-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .service-card-link:hover { color: var(--blue-dark); }
+
+    /* ── GOOGLE REVIEWS ── */
+    #reviews { background: #fff; }
+    .reviews-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .reviews-left { }
+    .review-score-block {
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 24px;
+      gap: 24px;
+      background: var(--gray-light);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      border: 1px solid var(--gray-mid);
     }
-    .service-icon.blue { background: #dbeafe; }
-    .service-icon.orange { background: #ffedd5; }
-    .service-card h3 {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 10px;
-      letter-spacing: -0.2px;
+    .big-score { font-size: 72px; font-weight: 900; color: var(--dark); line-height: 1; letter-spacing: -3px; }
+    .score-stars { font-size: 28px; color: #f59e0b; margin-bottom: 4px; }
+    .score-count { font-size: 14px; color: var(--gray-text); font-weight: 600; }
+    .review-cards { display: flex; flex-direction: column; gap: 14px; }
+    .review-card {
+      background: var(--gray-light);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--gray-mid);
     }
-    .service-card p { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
-    .service-list {
-      list-style: none;
-      margin-top: 12px;
+    .review-card .stars { color: #f59e0b; font-size: 14px; margin-bottom: 8px; }
+    .review-card p { font-size: 14px; color: #475569; line-height: 1.65; font-style: italic; margin-bottom: 12px; }
+    .review-card .author { font-size: 13px; font-weight: 700; color: var(--dark); }
+    .review-card .via { font-size: 12px; color: var(--gray-text); }
+    .reviews-right {
+      text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      align-items: center;
+      gap: 20px;
     }
-    .service-list li {
-      font-size: 13px;
-      color: #475569;
+    .google-badge {
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .service-list li::before {
-      content: '✓';
-      color: var(--orange);
+      gap: 12px;
+      background: #fff;
+      border: 2px solid var(--gray-mid);
+      border-radius: 14px;
+      padding: 18px 28px;
+      font-size: 22px;
       font-weight: 800;
-      font-size: 12px;
+      color: var(--dark);
     }
+    .google-g {
+      width: 40px; height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .reviews-cta-text {
+      font-size: 17px;
+      color: #475569;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 340px;
+    }
+    .btn-google {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      color: #374151;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      border: 2px solid var(--gray-mid);
+      transition: all .2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .btn-google:hover {
+      border-color: #4285F4;
+      box-shadow: 0 4px 20px rgba(66,133,244,0.2);
+      transform: translateY(-2px);
+    }
+    .btn-google-icon {
+      width: 30px; height: 30px;
+      flex-shrink: 0;
+    }
+    .review-stars-big { font-size: 32px; color: #f59e0b; }
+    .review-note { font-size: 13px; color: var(--gray-text); }
 
     /* ── WHY US ── */
-    #why { background: #fff; }
+    #why { background: var(--gray-light); }
     .why-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
-      margin-top: 16px;
     }
-    .why-visual {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
+    .why-photo {
+      width: 100%;
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
     }
-    .why-visual-inner {
-      text-align: center;
+    .why-content { }
+    .why-points { display: flex; flex-direction: column; gap: 26px; margin-top: 32px; }
+    .why-point { display: flex; gap: 18px; align-items: flex-start; }
+    .why-point-num {
+      width: 40px; height: 40px;
+      background: var(--blue);
       color: #fff;
-      padding: 32px;
-    }
-    .why-visual-icon { font-size: 80px; margin-bottom: 16px; }
-    .why-visual-text { font-size: 22px; font-weight: 800; opacity: 0.9; }
-    .why-badge {
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
-      background: var(--orange);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(232,93,0,0.4);
-    }
-    .why-points { display: flex; flex-direction: column; gap: 28px; }
-    .why-point { display: flex; gap: 20px; align-items: flex-start; }
-    .why-point-icon {
-      width: 48px; height: 48px;
-      background: var(--gray-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
       flex-shrink: 0;
-      transition: background .2s;
     }
-    .why-point:hover .why-point-icon { background: #dbeafe; }
     .why-point h4 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
     .why-point p { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
 
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--blue-dark);
+      padding: 0;
+    }
+    .cta-band-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: stretch;
+    }
+    .cta-band-text {
+      flex: 1;
+      padding: 48px 0;
+    }
+    .cta-band h2 { font-size: 30px; font-weight: 900; color: #fff; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .cta-band p { font-size: 15px; color: #bfdbfe; }
+    .cta-band-actions {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .cta-band-phone {
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      padding: 0 44px;
+      font-size: 20px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+      transition: background .2s;
+    }
+    .cta-band-phone:hover { background: var(--orange-light); }
+
     /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--blue); }
-    #testimonials .section-title { color: #fff; }
-    #testimonials .section-label { color: #ffa366; }
-    #testimonials .section-label::before { background: #ffa366; }
-    .testimonials-grid {
+    #testimonials { background: #fff; }
+    .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
     .testi-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
+      background: var(--gray-light);
+      border: 1px solid var(--gray-mid);
+      border-radius: 14px;
       padding: 28px;
-      transition: background .2s;
+      transition: box-shadow .2s;
     }
-    .testi-card:hover { background: rgba(255,255,255,0.1); }
-    .stars { color: #fbbf24; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
-    .testi-text { font-size: 15px; color: #cbd5e1; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-card:hover { box-shadow: 0 8px 32px rgba(21,101,192,0.1); }
+    .testi-stars { color: #f59e0b; font-size: 17px; margin-bottom: 14px; }
+    .testi-text { font-size: 14px; color: #475569; line-height: 1.7; font-style: italic; margin-bottom: 18px; }
     .testi-author { display: flex; align-items: center; gap: 12px; }
     .testi-avatar {
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       border-radius: 50%;
-      background: var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
+      background: var(--blue);
       color: #fff;
-    }
-    .testi-name { font-size: 14px; font-weight: 700; color: #f1f5f9; }
-    .testi-via { font-size: 12px; color: #64748b; }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      background: linear-gradient(135deg, var(--orange) 0%, #c44b00 100%);
-      padding: 64px 0;
-    }
-    .cta-band-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .cta-band h2 { font-size: 32px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-    .cta-band p { font-size: 16px; color: rgba(255,255,255,0.8); margin-top: 6px; }
-    .btn-white {
-      background: #fff;
-      color: var(--orange);
-      text-decoration: none;
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
-      white-space: nowrap;
-      transition: transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center;
     }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-
-    /* ── SERVICE AREAS ── */
-    #areas { background: var(--gray-light); }
-    .areas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
-      margin-top: 40px;
-    }
-    .area-chip {
-      background: #fff;
-      border: 1px solid var(--gray-mid);
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #334155;
-      text-align: center;
-      transition: all .15s;
-    }
-    .area-chip:hover { border-color: var(--blue-light); color: var(--blue); background: #eff6ff; }
+    .testi-name { font-size: 14px; font-weight: 700; color: var(--dark); }
+    .testi-via { font-size: 12px; color: var(--gray-text); }
 
     /* ── CONTACT ── */
-    #contact { background: #fff; }
+    #contact { background: var(--gray-light); }
     .contact-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
       margin-top: 48px;
       align-items: start;
     }
-    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
     .contact-card {
+      background: #fff;
+      border: 1px solid var(--gray-mid);
+      border-radius: 12px;
+      padding: 20px 22px;
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      background: var(--gray-light);
-      border-radius: 14px;
-      padding: 20px;
     }
     .contact-card-icon {
-      width: 44px; height: 44px;
-      background: var(--blue);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: #dbeafe;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .contact-card h4 { font-size: 13px; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-    .contact-card p, .contact-card a { font-size: 16px; font-weight: 700; color: var(--dark); text-decoration: none; }
-    .contact-card a:hover { color: var(--blue-light); }
+    .contact-card h4 { font-size: 11px; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-card p, .contact-card a { font-size: 15px; font-weight: 700; color: var(--dark); text-decoration: none; }
+    .contact-card a:hover { color: var(--blue); }
     .contact-form {
-      background: var(--gray-light);
-      border-radius: 20px;
-      padding: 36px;
+      background: #fff;
       border: 1px solid var(--gray-mid);
+      border-radius: 16px;
+      padding: 36px;
     }
-    .contact-form h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
+    .contact-form h3 { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 24px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .form-group label { font-size: 13px; font-weight: 700; color: #475569; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
     .form-group input,
     .form-group select,
     .form-group textarea {
-      padding: 12px 16px;
+      padding: 12px 14px;
       border: 1.5px solid var(--gray-mid);
       border-radius: 8px;
       font-size: 15px;
@@ -567,70 +568,74 @@
     }
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--blue-light); }
-    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 96px; }
     .btn-submit {
       width: 100%;
       background: var(--blue);
       color: #fff;
       border: none;
       padding: 15px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 800;
       cursor: pointer;
       font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: background .2s, transform .15s;
-      margin-top: 8px;
+      margin-top: 6px;
     }
-    .btn-submit:hover { background: var(--blue-light); transform: translateY(-1px); }
+    .btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
     /* ── FOOTER ── */
-    footer { background: var(--dark); color: #94a3b8; }
+    footer { background: #0f172a; color: #64748b; }
     .footer-main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 56px 24px 40px;
+      padding: 56px 32px 40px;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
+      gap: 56px;
     }
-    .footer-brand .logo-text .l1 { color: #fff; }
-    .footer-desc { font-size: 14px; line-height: 1.7; margin: 16px 0 24px; color: #64748b; }
-    .footer-phone { font-size: 20px; font-weight: 800; color: var(--orange-light); text-decoration: none; }
-    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+    .footer-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); margin-bottom: 16px; display: block; }
+    .footer-desc { font-size: 14px; line-height: 1.75; color: #475569; margin-bottom: 20px; }
+    .footer-phone { font-size: 20px; font-weight: 900; color: #60a5fa; text-decoration: none; }
+    .footer-col h4 { font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { font-size: 14px; color: #64748b; text-decoration: none; transition: color .2s; }
-    .footer-col ul li a:hover { color: #fff; }
+    .footer-col ul li a { font-size: 14px; color: #475569; text-decoration: none; transition: color .2s; }
+    .footer-col ul li a:hover { color: #e2e8f0; }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.05);
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 24px;
+      padding: 20px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 13px;
-      color: #475569;
+      color: #334155;
       flex-wrap: wrap;
       gap: 8px;
     }
-    .footer-bottom a { color: #475569; text-decoration: none; }
-    .footer-bottom a:hover { color: #94a3b8; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .why-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-layout, .contact-layout, .reviews-layout { grid-template-columns: 1fr; gap: 40px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(2) { border-right: none; }
       .footer-main { grid-template-columns: 1fr; gap: 32px; }
       .nav-links { display: none; }
+      .cta-band-inner { flex-direction: column; }
+      .cta-band-phone { padding: 20px 32px; width: 100%; justify-content: center; }
     }
     @media (max-width: 600px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .cta-band-inner { flex-direction: column; text-align: center; }
+      .hero { height: 520px; }
+      .services-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .trust-inner { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -641,11 +646,13 @@
   <div class="topbar-inner">
     <div class="topbar-left">
       <a href="tel:3238499863">📞 (323) 849-9863</a>
-      <a href="#">📍 5110 Coringa Dr, Los Angeles, CA 90042</a>
-      <span>🕐 24/7 Emergency Service</span>
+      <span>📍 5110 Coringa Dr, Los Angeles, CA 90042</span>
+      <span>🕐 Open 24/7</span>
     </div>
     <div class="topbar-right">
-      <span class="badge-licensed">Licensed &amp; Bonded #1007793</span>
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Google">g</a>
+      <a href="#" title="Yelp">y</a>
     </div>
   </div>
 </div>
@@ -654,21 +661,16 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 14c0 4.97-4.03 9-9 9s-9-4.03-9-9c0-3.87 2.44-7.18 5.9-8.44L12 2l3.1 3.56C18.56 6.82 21 10.13 21 14zm-9 7a7 7 0 100-14 7 7 0 000 14zm1-7.72V9h-2v5.28l3.36 2 1-1.72L13 13.28z"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <div class="l1">ALL STAR</div>
-        <div class="l2">Plumbing · Heating · Air</div>
-      </div>
+      <img src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2021/01/logo-top-1.png"
+           alt="All Star Plumbing Heating & Air"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <span style="display:none; font-size:18px; font-weight:900; color:var(--blue); letter-spacing:-0.5px;">ALL STAR PLUMBING</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#">Home</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#why">Why Us</a></li>
+      <li><a href="#why">About</a></li>
       <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#areas">Service Area</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">
@@ -679,41 +681,48 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-overlay"></div>
-  <div class="hero-image-side"></div>
+  <div class="hero-img"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">⭐ Top-Rated in Los Angeles</div>
-    <h1>LA's Trusted<br><span>Plumbing, Heating</span><br>&amp; Air Experts</h1>
-    <p class="hero-sub">26 years serving Los Angeles. Licensed, bonded &amp; insured. Fast response — day or night, we're on our way.</p>
+    <div class="hero-eyebrow">Licensed & Trusted Since 1999</div>
+    <h1>LA's Trusted<br><span>Plumbing, Heating</span><br>& Air Experts</h1>
+    <p class="hero-sub">26 years serving Los Angeles. Available 24/7 — fast, honest, and affordable.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">📅 Schedule Service</a>
-      <a href="tel:3238499863" class="hero-phone-pill">
-        <span class="dot"></span>
-        (323) 849-9863
-      </a>
+      <a href="#contact" class="btn-hero">📅 Book a Service</a>
+      <a href="tel:3238499863" class="btn-hero-outline">📞 (323) 849-9863</a>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num">26<span>+</span></div>
-      <div class="stat-label">Years in Business</div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🏆</div>
+      <div class="trust-text">
+        <strong>26+ Years Experience</strong>
+        <span>Serving LA since 1999</span>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num" style="color:var(--orange)">24<span style="color:var(--orange)">/7</span></div>
-      <div class="stat-label">Emergency Service</div>
+    <div class="trust-item">
+      <div class="trust-icon">🕐</div>
+      <div class="trust-text">
+        <strong>24/7 Emergency Service</strong>
+        <span>We answer every call</span>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">5<span>★</span></div>
-      <div class="stat-label">HomeAdvisor Rated</div>
+    <div class="trust-item">
+      <div class="trust-icon">🔐</div>
+      <div class="trust-text">
+        <strong>Licensed & Insured</strong>
+        <span>CA License #1007793</span>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">100<span>%</span></div>
-      <div class="stat-label">Licensed &amp; Insured</div>
+    <div class="trust-item">
+      <div class="trust-icon">⭐</div>
+      <div class="trust-text">
+        <strong>5-Star Rated</strong>
+        <span>HomeAdvisor certified</span>
+      </div>
     </div>
   </div>
 </div>
@@ -721,68 +730,145 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-inner">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Full-Service Plumbing,<br>Heating &amp; Air</h2>
-    <p class="section-desc">From dripping faucets to full HVAC installations — one call handles it all. Transparent pricing, no surprises.</p>
-
+    <div class="section-eyebrow">What We Do</div>
+    <h2 class="section-title">Full-Service Plumbing,<br>Heating & Air</h2>
+    <p class="section-desc">One call handles everything — from clogged drains to complete HVAC systems. Upfront pricing, no surprises.</p>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon blue">🚿</div>
-        <h3>Drain &amp; Sewer</h3>
-        <ul class="service-list">
-          <li>Drain Cleaning</li>
-          <li>Hydro Jetting</li>
-          <li>Sewer Line Repair &amp; Replacement</li>
-          <li>Video Camera Inspection</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic3.jpg"
+             alt="Pipe Repair" />
+        <div class="service-card-body">
+          <h3>Pipe Repair & Repiping</h3>
+          <p>Copper repiping, PEX piping, leak detection, and full pipe replacement.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
       </div>
       <div class="service-card">
-        <div class="service-icon orange">🔥</div>
-        <h3>Water Heaters</h3>
-        <ul class="service-list">
-          <li>Tankless Water Heater Install</li>
-          <li>Water Heater Repair</li>
-          <li>Water Heater Replacement</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic2.jpg"
+             alt="Drain Cleaning" />
+        <div class="service-card-body">
+          <h3>Drain Cleaning</h3>
+          <p>Clogged drains, hydro jetting, sewer line repair, and video camera inspection.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
       </div>
       <div class="service-card">
-        <div class="service-icon blue">🔧</div>
-        <h3>Pipe Services</h3>
-        <ul class="service-list">
-          <li>Copper Repiping</li>
-          <li>PEX Piping</li>
-          <li>Pipe Repair &amp; Replacement</li>
-          <li>Leak Detection</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic4-1.jpg"
+             alt="Water Heaters" />
+        <div class="service-card-body">
+          <h3>Water Heaters</h3>
+          <p>Tankless water heater installation, repair, and replacement — all brands.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
       </div>
       <div class="service-card">
-        <div class="service-icon orange">❄️</div>
-        <h3>Air Conditioning</h3>
-        <ul class="service-list">
-          <li>AC Repair &amp; Maintenance</li>
-          <li>AC Installation</li>
-          <li>Ductless Mini-Split Systems</li>
-          <li>Commercial HVAC</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic1-1.jpg"
+             alt="Emergency Plumbing" />
+        <div class="service-card-body">
+          <h3>Emergency Plumbing</h3>
+          <p>Burst pipes, severe leaks, backups — 24/7 fast response across LA.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
       </div>
       <div class="service-card">
-        <div class="service-icon blue">🌡️</div>
-        <h3>Heating</h3>
-        <ul class="service-list">
-          <li>Furnace Repair &amp; Maintenance</li>
-          <li>Heating System Installation</li>
-          <li>Heat Pump Services</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic5.jpg"
+             alt="Air Conditioning" />
+        <div class="service-card-body">
+          <h3>Air Conditioning</h3>
+          <p>AC repair, maintenance, new installation, and ductless mini-split systems.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
       </div>
       <div class="service-card">
-        <div class="service-icon orange">🚨</div>
-        <h3>Emergency Plumbing</h3>
-        <ul class="service-list">
-          <li>24/7 Emergency Response</li>
-          <li>Burst Pipe Repair</li>
-          <li>Garbage Disposal Repair</li>
-          <li>Emergency Leak Repair</li>
-        </ul>
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/heat-1.jpg"
+             alt="Heating" />
+        <div class="service-card-body">
+          <h3>Heating</h3>
+          <p>Furnace repair and installation, heating maintenance, heat pump services.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic8.jpg"
+             alt="Ductless Mini-Splits" />
+        <div class="service-card-body">
+          <h3>Ductless Mini-Splits</h3>
+          <p>Energy-efficient ductless systems — perfect for older LA homes without ducts.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="service-card-img"
+             src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2020/12/pic7.jpg"
+             alt="Commercial HVAC" />
+        <div class="service-card-body">
+          <h3>Commercial HVAC</h3>
+          <p>Full commercial heating and cooling services for businesses across LA.</p>
+          <a href="#contact" class="service-card-link">Schedule →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-eyebrow">Google Reviews</div>
+    <h2 class="section-title">Happy Customers Leave<br>Us Reviews</h2>
+    <div class="reviews-layout">
+      <div class="reviews-left">
+        <div class="review-score-block">
+          <div class="big-score">5.0</div>
+          <div>
+            <div class="score-stars">★★★★★</div>
+            <div class="score-count">Based on Google Reviews</div>
+          </div>
+        </div>
+        <div class="review-cards">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Victor was prompt, honest, and fixed our problem quickly. Reasonable pricing and courteous service. I'll call them every time."</p>
+            <div class="author">Maria T.</div>
+            <div class="via">via HomeAdvisor</div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Same-day service, fair price, job done right. Victor found the issue immediately and didn't try to upsell me. Best plumber in LA."</p>
+            <div class="author">David R.</div>
+            <div class="via">via HomeAdvisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-right">
+        <div class="google-badge">
+          <span class="google-g">G</span>
+          Google Reviews
+        </div>
+        <div class="review-stars-big">★★★★★</div>
+        <p class="reviews-cta-text">Had a great experience with All Star Plumbing? Your review helps other homeowners in LA find a plumber they can trust.</p>
+        <p class="review-note" style="font-size:13px;color:var(--gray-text);">Takes less than 60 seconds</p>
+        <a
+          href="https://search.google.com/local/writereview?placeid=ChIJ7WhWpGbGwoARzMzYJqU9fTE"
+          target="_blank"
+          class="btn-google"
+        >
+          <svg class="btn-google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Leave Us a Google Review
+        </a>
+        <p style="font-size:12px;color:#94a3b8;text-align:center;">Your review will be live on Google in minutes</p>
       </div>
     </div>
   </div>
@@ -792,87 +878,43 @@
 <section id="why">
   <div class="section-inner">
     <div class="why-layout">
-      <div class="why-visual">
-        <div class="why-visual-inner">
-          <div class="why-visual-icon">🏆</div>
-          <div class="why-visual-text">Los Angeles's Most<br>Trusted Plumbers</div>
-        </div>
-        <div class="why-badge">26 Years<br>Serving LA</div>
-      </div>
-      <div>
-        <div class="section-label">Why All Star</div>
-        <h2 class="section-title">The LA Plumber<br>You Can Actually Trust</h2>
+      <img
+        class="why-photo"
+        src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2021/01/homepic.png"
+        alt="All Star Plumbing team"
+      />
+      <div class="why-content">
+        <div class="section-eyebrow">Why All Star</div>
+        <h2 class="section-title">The LA Plumber You Can Actually Trust</h2>
+        <p class="section-desc">Quick callouts, affordable prices, and transparent costs — that's the All Star promise.</p>
         <div class="why-points">
           <div class="why-point">
-            <div class="why-point-icon">⚡</div>
+            <div class="why-point-num">1</div>
             <div>
               <h4>Fast Response, Day or Night</h4>
-              <p>We offer true 24/7 emergency service across Los Angeles. When a pipe bursts at 2 AM, we answer.</p>
+              <p>True 24/7 emergency service across LA. When a pipe bursts at 2 AM, we answer.</p>
             </div>
           </div>
           <div class="why-point">
-            <div class="why-point-icon">💵</div>
+            <div class="why-point-num">2</div>
             <div>
               <h4>Transparent, Upfront Pricing</h4>
-              <p>No bait-and-switch. You'll know the cost before we start — affordable prices with no hidden fees.</p>
+              <p>You'll know the cost before we start. No bait-and-switch, no hidden fees.</p>
             </div>
           </div>
           <div class="why-point">
-            <div class="why-point-icon">🔐</div>
+            <div class="why-point-num">3</div>
             <div>
-              <h4>Licensed, Bonded &amp; Insured</h4>
-              <p>CA License #1007793. You're fully protected on every job — no shortcuts, ever.</p>
+              <h4>Licensed, Bonded & Insured</h4>
+              <p>CA License #1007793. Fully protected on every job — no shortcuts, ever.</p>
             </div>
           </div>
           <div class="why-point">
-            <div class="why-point-icon">⭐</div>
+            <div class="why-point-num">4</div>
             <div>
-              <h4>5-Star Rated on HomeAdvisor</h4>
-              <p>Real customers, real reviews. Victor and our team are known for honesty, speed, and quality work.</p>
+              <h4>26 Years Serving Los Angeles</h4>
+              <p>We've been the neighborhood plumber since 1999. Our reputation is everything.</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-inner">
-    <div class="section-label">Reviews</div>
-    <h2 class="section-title">What Our Customers Say</h2>
-    <div class="testimonials-grid">
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Victor was prompt, honest, and fixed our problem quickly. He found the issue immediately and the pricing was very reasonable. I'll call them every time."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">M</div>
-          <div>
-            <div class="testi-name">Maria T.</div>
-            <div class="testi-via">via HomeAdvisor</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Courteous, professional, and on time. They explained everything clearly and didn't try to upsell me on things I didn't need. Highly recommend."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">D</div>
-          <div>
-            <div class="testi-name">David R.</div>
-            <div class="testi-via">via HomeAdvisor</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Best plumber I've used in LA. Same-day service, fair price, and the job was done right. Won't use anyone else going forward."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">S</div>
-          <div>
-            <div class="testi-name">Sandra K.</div>
-            <div class="testi-via">via HomeAdvisor</div>
           </div>
         </div>
       </div>
@@ -883,51 +925,55 @@
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="cta-band-inner">
-    <div>
-      <h2>Plumbing emergency? We're ready.</h2>
-      <p>Call now or book online — fast response guaranteed, 24 hours a day.</p>
+    <div class="cta-band-text">
+      <h2>Plumbing emergency? We're ready 24/7.</h2>
+      <p>Call now or book online — fast, honest service guaranteed.</p>
     </div>
-    <a href="tel:3238499863" class="btn-white">📞 (323) 849-9863</a>
+    <div class="cta-band-actions">
+      <a href="tel:3238499863" class="cta-band-phone">📞 (323) 849-9863</a>
+    </div>
   </div>
 </div>
 
-<!-- SERVICE AREAS -->
-<section id="areas">
+<!-- TESTIMONIALS -->
+<section id="testimonials">
   <div class="section-inner">
-    <div class="section-label">Where We Work</div>
-    <h2 class="section-title">Serving Greater Los Angeles</h2>
-    <p class="section-desc">We serve the entire LA area — if you're not sure we cover your neighborhood, just call us.</p>
-    <div class="areas-grid">
-      <div class="area-chip">Los Angeles</div>
-      <div class="area-chip">Burbank</div>
-      <div class="area-chip">Glendale</div>
-      <div class="area-chip">Pasadena</div>
-      <div class="area-chip">North Hollywood</div>
-      <div class="area-chip">Van Nuys</div>
-      <div class="area-chip">Sherman Oaks</div>
-      <div class="area-chip">Studio City</div>
-      <div class="area-chip">Woodland Hills</div>
-      <div class="area-chip">Calabasas</div>
-      <div class="area-chip">Chatsworth</div>
-      <div class="area-chip">Granada Hills</div>
-      <div class="area-chip">Northridge</div>
-      <div class="area-chip">Reseda</div>
-      <div class="area-chip">Encino</div>
-      <div class="area-chip">Tarzana</div>
-      <div class="area-chip">Alhambra</div>
-      <div class="area-chip">El Monte</div>
-      <div class="area-chip">West Covina</div>
-      <div class="area-chip">Culver City</div>
-      <div class="area-chip">Santa Monica</div>
-      <div class="area-chip">Beverly Hills</div>
-      <div class="area-chip">Hollywood</div>
-      <div class="area-chip">Eagle Rock</div>
-      <div class="area-chip">Highland Park</div>
-      <div class="area-chip">Montebello</div>
-      <div class="area-chip">Downey</div>
-      <div class="area-chip">Long Beach</div>
-      <div class="area-chip">Torrance</div>
-      <div class="area-chip">& Surrounding Areas</div>
+    <div class="section-eyebrow">Customer Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Victor was prompt, honest, and fixed our problem quickly. He found the issue immediately and the pricing was very reasonable. I'll call them every time."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Maria T.</div>
+            <div class="testi-via">HomeAdvisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Courteous, professional, and on time. They explained everything clearly and didn't try to upsell me on things I didn't need. Highly recommend."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">D</div>
+          <div>
+            <div class="testi-name">David R.</div>
+            <div class="testi-via">HomeAdvisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Best plumber I've used in LA. Same-day service, fair price, and the job was done right. Won't use anyone else going forward."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Sandra K.</div>
+            <div class="testi-via">HomeAdvisor</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -935,36 +981,43 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label">Get In Touch</div>
+    <div class="section-eyebrow">Get In Touch</div>
     <h2 class="section-title">Schedule Your Service Today</h2>
     <div class="contact-layout">
       <div class="contact-info">
         <div class="contact-card">
           <div class="contact-card-icon">📞</div>
           <div>
-            <h4>Call or Text</h4>
+            <h4>Phone</h4>
             <a href="tel:3238499863">(323) 849-9863</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div>
+            <h4>Alternate</h4>
+            <a href="tel:3238490797">(323) 849-0797</a>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-card-icon">📍</div>
           <div>
             <h4>Address</h4>
-            <p>5110 Coringa Dr<br>Los Angeles, CA 90042</p>
+            <p>5110 Coringa Dr, Los Angeles, CA 90042</p>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-card-icon">🕐</div>
           <div>
             <h4>Hours</h4>
-            <p>24/7 — We Never Close<br><span style="font-size:13px;color:var(--gray-text);font-weight:500">Emergency service always available</span></p>
+            <p>24/7 — Emergency Service Always Available</p>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-card-icon">🔐</div>
           <div>
             <h4>License</h4>
-            <p>CA License #1007793<br><span style="font-size:13px;color:var(--gray-text);font-weight:500">Licensed, Bonded &amp; Insured</span></p>
+            <p>CA #1007793 · Licensed, Bonded & Insured</p>
           </div>
         </div>
       </div>
@@ -988,19 +1041,21 @@
           <label>Service Needed</label>
           <select>
             <option>Select a service...</option>
-            <option>Drain Cleaning</option>
-            <option>Water Heater</option>
+            <option>Drain Cleaning / Hydro Jetting</option>
+            <option>Water Heater Repair / Install</option>
             <option>Pipe Repair / Repiping</option>
             <option>Leak Detection</option>
             <option>Sewer Line Repair</option>
             <option>AC Repair / Installation</option>
             <option>Heating Repair / Installation</option>
+            <option>Ductless Mini-Split</option>
+            <option>Commercial HVAC</option>
             <option>Emergency Service</option>
             <option>Other</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Message</label>
+          <label>Tell Us What's Going On</label>
           <textarea placeholder="Describe the issue briefly..."></textarea>
         </div>
         <button class="btn-submit">Request Service →</button>
@@ -1012,19 +1067,13 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-main">
-    <div class="footer-brand">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 14c0 4.97-4.03 9-9 9s-9-4.03-9-9c0-3.87 2.44-7.18 5.9-8.44L12 2l3.1 3.56C18.56 6.82 21 10.13 21 14zm-9 7a7 7 0 100-14 7 7 0 000 14zm1-7.72V9h-2v5.28l3.36 2 1-1.72L13 13.28z"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <div class="l1">ALL STAR</div>
-          <div class="l2">Plumbing · Heating · Air</div>
-        </div>
+    <div>
+      <div class="footer-logo">
+        <img src="https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2021/01/logo-top-1.png"
+             alt="All Star Plumbing"
+             onerror="this.style.display='none'" />
       </div>
-      <p class="footer-desc">Serving Los Angeles for 26 years. Fast, honest, and affordable plumbing and HVAC services — 24 hours a day, 7 days a week.</p>
+      <p class="footer-desc">Serving Los Angeles for 26 years. Fast, honest, and affordable plumbing and HVAC — 24 hours a day, 7 days a week.</p>
       <a href="tel:3238499863" class="footer-phone">(323) 849-9863</a>
     </div>
     <div class="footer-col">
@@ -1043,15 +1092,15 @@
       <h4>Company</h4>
       <ul>
         <li><a href="#why">About Us</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="#reviews">Google Reviews</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="tel:3238499863">24/7 Emergency</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 All Star Plumbing, Heating &amp; Air. CA License #1007793. All rights reserved.</span>
+    <span>© 2025 All Star Plumbing, Heating & Air · CA License #1007793</span>
     <span>5110 Coringa Dr, Los Angeles, CA 90042</span>
   </div>
 </footer>
