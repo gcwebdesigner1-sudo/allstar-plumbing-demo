@@ -126,22 +126,38 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      height: 620px;
+      min-height: 92vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      background: url('https://www.allstarplumbingcorp.com/wp-content/uploads/sites/40/2021/01/homepic.png') center/cover no-repeat;
+    .hero-slides { position:absolute; inset:0; z-index:0; }
+    .hero-slide {
+      position:absolute; inset:0; background-size:cover; background-position:center;
+      opacity:0; animation:heroSlide 25s infinite;
     }
+    .hero-slide::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(110deg, rgba(13,71,161,.55) 25%, rgba(13,71,161,.2) 100%);
+    }
+    .hero-slide:nth-child(1) { background-image:url('https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?w=1600&q=80'); animation-delay:0s; }
+    .hero-slide:nth-child(2) { background-image:url('https://images.pexels.com/photos/7859953/pexels-photo-7859953.jpeg?w=1600&q=80'); animation-delay:5s; }
+    .hero-slide:nth-child(3) { background-image:url('https://images.pexels.com/photos/8486923/pexels-photo-8486923.jpeg?w=1600&q=80'); animation-delay:10s; }
+    .hero-slide:nth-child(4) { background-image:url('https://images.pexels.com/photos/8488058/pexels-photo-8488058.jpeg?w=1600&q=80'); animation-delay:15s; }
+    .hero-slide:nth-child(5) { background-image:url('https://images.pexels.com/photos/8486972/pexels-photo-8486972.jpeg?w=1600&q=80'); animation-delay:20s; }
+    @keyframes heroSlide { 0%{opacity:0} 5%{opacity:1} 20%{opacity:1} 25%{opacity:0} 100%{opacity:0} }
     .hero-inner {
       position: relative;
+      z-index: 1;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 32px;
       width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .hero-eyebrow {
       font-size: 13px;
@@ -681,14 +697,21 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-img"></div>
+  <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Licensed & Trusted Since 1999</div>
-    <h1>LA's Trusted<br><span>Plumbing, Heating</span><br>& Air Experts</h1>
-    <p class="hero-sub">26 years serving Los Angeles. Available 24/7 — fast, honest, and affordable.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-hero">📅 Book a Service</a>
-      <a href="tel:3238499863" class="btn-hero-outline">📞 (323) 849-9863</a>
+    <h1 style="color:#fff;margin-bottom:8px;">All Star Plumbing,<br><span>Heating & Air</span></h1>
+    <p style="font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.6);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:36px;">Los Angeles, California</p>
+    <div class="hero-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:460px;width:100%;">
+      <a href="tel:3238499863" class="btn-hero" style="justify-content:center;text-align:center;">📞 (323) 849-9863</a>
+      <a href="#contact" class="btn-hero-outline" style="justify-content:center;text-align:center;">📋 Free Estimate</a>
+      <a href="#contact" class="btn-hero-outline" style="justify-content:center;text-align:center;">📅 Book Now</a>
+      <a href="#services" class="btn-hero-outline" style="justify-content:center;text-align:center;">🔧 Services</a>
     </div>
   </div>
 </section>
@@ -1100,7 +1123,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 All Star Plumbing, Heating & Air · CA License #1007793</span>
+    <span>© 2026 All Star Plumbing, Heating & Air · CA License #1007793</span>
     <span>5110 Coringa Dr, Los Angeles, CA 90042</span>
   </div>
 </footer>
